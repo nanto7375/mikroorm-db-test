@@ -1,4 +1,12 @@
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import {
+  Cascade,
+  Collection,
+  Entity,
+  OneToMany,
+  PrimaryKey,
+  Property,
+} from '@mikro-orm/core';
+import { Bbb } from './bbb.entity';
 
 @Entity()
 export class Aaa {
@@ -7,4 +15,7 @@ export class Aaa {
 
   @Property()
   name: string;
+
+  @OneToMany(() => Bbb, (bbb) => bbb.parent)
+  childs = new Collection<Bbb>(this);
 }

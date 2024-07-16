@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -6,7 +6,16 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  setRecord() {
+    return this.appService.setRecord();
+  }
+
+  @Get('delete-bbb/:id')
+  deleteBbb(@Param('id') id) {
+    return this.appService.deleteBbb(id);
+  }
+  @Get('delete-aaa/:id')
+  deleteAaa(@Param('id') id) {
+    return this.appService.deleteAaa(id);
   }
 }
