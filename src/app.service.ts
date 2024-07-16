@@ -39,4 +39,17 @@ export class AppService {
     await this.aaaRepository.removeAndFlush(aaa);
     return true;
   }
+
+  async change(id) {
+    const aaa = await this.aaaRepository.findOne({ id }, { populate: ['*'] });
+    aaa.childs[0].name = 'changed';
+    await this.aaaRepository.flush();
+    return true;
+  }
+
+  async delete(id) {
+    const aaa = await this.aaaRepository.findOne({ id }, { populate: ['*'] });
+    await this.aaaRepository.removeAndFlush(aaa);
+    return true;
+  }
 }

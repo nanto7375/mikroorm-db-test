@@ -11,7 +11,7 @@ export class Bbb {
 
   @ManyToOne(() => Aaa, {
     nullable: true,
-    deleteRule: 'set null',
+    // deleteRule: 'set null',
   })
   parent: Aaa;
 }

@@ -18,4 +18,14 @@ export class AppController {
   deleteAaa(@Param('id') id) {
     return this.appService.deleteAaa(id);
   }
+
+  @Get('change/:id')
+  change(@Param('id') id) {
+    return this.appService.change(id);
+  }
+
+  @Get('delete/:id')
+  delete(@Param('id') id) {
+    return this.appService.delete(id);
+  }
 }
